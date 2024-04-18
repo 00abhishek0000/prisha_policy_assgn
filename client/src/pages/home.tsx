@@ -17,7 +17,7 @@ interface Book {
 const BookItem: React.FC<Book> = ({ ...data}) => {
   const navigate = useNavigate();
   function handleClick(data: any): MouseEventHandler<HTMLDivElement> {
-    return (event) => {
+    return () => {
       navigate(`/book/${data.name}`,{ state: { bookData: data } })
       console.log('Clicked with data:', data);
     };

@@ -5,26 +5,25 @@ import { Rate } from "antd";
 import { SetStateAction, useState } from 'react';
 
 const bookView = () => {
-let { id } = useParams();
+
+const { id } = useParams();
 const location = useLocation();
-const {bookData} = location.state
-console.log("data",bookData)
-const [rating,setRating] =  useState(0);
-if(bookData.rating) setRating(bookData.rating)
-if(id==undefined) id = "sh"
+const { bookData } = location.state;
+const [rating, setRating] = useState(bookData.rating || 0);
 // call to endpoint to change the rating
 // write the state that handles the rating
-    const to_send = {
-        name: id,
-        rating: rating
+
+const handleChange = async (value: any) => {
+    setRating(value);
+    if(id!=undefined){
+        const to_send = {
+            name: id,
+            rating: value
+          };
+        await client.rateBook.mutate(to_send);
     }
-    const handleChange = (value: SetStateAction<number>) => {
-        setRating(value);
-    };
-    async function send(to_send:any) {
-        await client.rateBook.mutate(to_send)
-    }
-    send(to_send)
+  };
+
   return (
     <>
         <div className='outer'>

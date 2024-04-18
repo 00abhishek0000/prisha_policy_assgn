@@ -57,6 +57,7 @@ t.router({
               pdf: true,
               readTime: true,
               details: true,
+              rating: true,
             }
           });
         console.log(specificColumns);
