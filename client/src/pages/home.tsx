@@ -1,6 +1,7 @@
 import React, { MouseEventHandler, useEffect, useState } from 'react';
 import '../App.css'
 import { useNavigate } from 'react-router-dom';
+import { BiBookBookmark } from "react-icons/bi";
 import {client} from '../client'
 
 interface Book {
@@ -50,13 +51,15 @@ const Home: React.FC = () => {
     <div className="home">
       <div className="main">
         <div className="bookshelf">
-          <h2>My Books</h2>
+          <div className='book-head'>
+            <h1> <BiBookBookmark/> My Books</h1>
+          </div>
           <div className="books">
             {books.map((book) => (
               <BookItem key={book.name} {...book} />
             ))}
           </div>
-          <button onClick={() => navigate("/addBooks")}>+ Add new Books</button>
+          <button className="button-80" style={{height:'8vh',width:'12vw',marginTop:'5vh',marginLeft:'1vw'}} onClick={() => navigate("/addBooks")}>+ Add new Books</button>
         </div>
       </div>
     </div>

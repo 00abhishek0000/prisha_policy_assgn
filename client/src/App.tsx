@@ -3,19 +3,12 @@ import Home from './pages/home';
 import AddBookPage from './pages/addBookPage';
 import Favourites from './pages/favourites';
 import BookView from './pages/bookView';
+import Navbar from './components/navbar';
 
 function App() {
   return (
     <Router>
-      <div className="header">
-        <div className="logo">Prisha Policy</div>
-        <button className="home">
-          <a href="/">Home</a>
-        </button>
-        <button className="favourites">
-        <a href="/favourites">Favourites</a>
-        </button>
-      </div>
+      <Navbar/>
       <Routes>
         <Route  path="/" element={<Home/>} />
         <Route  path="/addBooks" element={<AddBookPage/>} />

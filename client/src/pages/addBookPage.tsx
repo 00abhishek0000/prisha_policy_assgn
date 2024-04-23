@@ -89,60 +89,76 @@ const AddBookPage = () => {
 
   return (
     <div className="add-book-page">
-      <h1>Add Book</h1>
       <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="name">Name of the Book</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={book.name}
-            onChange={handleChange}
-            required
-          />
+      <div className="form-outer">
+        <div className="form-left">
+            <button className='button-80' onClick={()=>navigate('/')}> Back to Home </button>
+            <p className="addcover" >Add a Book Cover</p>
+            <input type="file" name="cover" id="cover" onChange={(e)=>handleFileChange(e,'cover')} className='input1 cover-inp'/>
+            <div className='cover-input'> Add the book cover </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="author">Author of the Book</label>
-          <input
-            type="text"
-            name="author"
-            id="author"
-            value={book.author}
-            onChange={handleChange}
-            required
-          />
+        <div className='form-right'>
+          <div className="form-group left">
+            <p className='text'>Name of the Book</p>
+            <input
+              type="text"
+              name="name"
+              id="name"
+              value={book.name}
+              onChange={handleChange}
+              required
+              className='input'
+              placeholder='Enter the book name'
+            />
+          </div>
+          <div className='readtime'>
+            <div className="form-group">
+              <p className='text'>Author of the Book</p>
+              <input
+                type="text"
+                name="author"
+                id="author"
+                value={book.author}
+                onChange={handleChange}
+                required
+                className='input'
+                placeholder='Add all authors comma seperated'
+              />
+            </div>
+            <div className="form-group">
+              <p className='text'>Book Read Time (in mins)</p>
+              <input
+                type="number"
+                name="readTime"
+                id="readTime"
+                value={book.readTime}
+                onChange={handleChange}
+                required
+                className='input'
+                placeholder='Add read time in mins'
+              />
+            </div>
+          </div>
+          <div className="form-group">
+            <p className='text'>Book Details</p>
+            <textarea
+              name="details"
+              id="details"
+              value={book.details}
+              onChange={handleChange}
+              required
+              className='input'
+              placeholder='Should not be more than 300 words'
+            />
+          </div>
+          <div className="form-group">
+            <p className='text'>Add a Book (PDF only, upto 10MB)</p>
+            <input type="file" name="pdf" id="cover" onChange={(e)=>handleFileChange(e,'pdf')} className='input book-inp'/>
+            <div className='pdf-input'> Click to add PDF</div>
+          </div>
         </div>
-        <div className="form-group">
-          <label htmlFor="details">Book Details</label>
-          <textarea
-            name="details"
-            id="details"
-            value={book.details}
-            onChange={handleChange}
-            required
-          />
         </div>
-        <div className="form-group">
-          <label htmlFor="readTime">Book Read Time (in mins)</label>
-          <input
-            type="number"
-            name="readTime"
-            id="readTime"
-            value={book.readTime}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="cover">Add a Book Cover (PDF only, upto 10MB)</label>
-          <input type="file" name="cover" id="cover" onChange={(e)=>handleFileChange(e,'cover')} />
-        </div>
-        <div className="form-group">
-          <label htmlFor="pdf">Add a Book (PDF only, upto 10MB)</label>
-          <input type="file" name="pdf" id="cover" onChange={(e)=>handleFileChange(e,'pdf')} />
-        </div>
-        <button type="submit" > Add Book </button>
+        <button type="submit" className='button-80 down' onClick={()=>handleSubmit}> Add Book </button>
       </form>
     </div>
   );
@@ -150,29 +166,3 @@ const AddBookPage = () => {
 
 
 export default AddBookPage;
-
-
-// const formData = {
-    //     name: book.name,
-    //     author: book.author,
-    //     details: book.details,
-    //     readTime: book.readTime,
-    //     cover: book.cover,
-    //     pdf: book.pdf || null,
-    // }
-
-    // const formData = new FormData();
-    // formData.append('name', book.name);
-    // formData.append('author', book.author);
-    // formData.append('details', book.details);
-    // formData.append('readTime', book.readTime.toString());
-    // if (book.cover) formData.append('cover', book.cover);
-    // if (book.pdf) {
-    //     // Construct PDF data object and append it to formData
-    //     const pdfData = {
-    //       buffer: await blobToBuffer(book.pdf),
-    //       size: book.pdf.size,
-    //       mimetype: book.pdf.type,
-    //     };
-    //     formData.append('pdf', JSON.stringify(pdfData));
-    //   }

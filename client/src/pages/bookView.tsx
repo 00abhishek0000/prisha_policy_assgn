@@ -1,8 +1,8 @@
-import { useLocation, useParams } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { client } from '../client';
 import '../App.css'
 import { Rate } from "antd";
-import { SetStateAction, useState } from 'react';
+import { useState } from 'react';
 
 const bookView = () => {
 
@@ -24,22 +24,23 @@ const handleChange = async (value: any) => {
     }
   };
 
+  const navigate =  useNavigate();
   return (
     <>
         <div className='outer'>
             <div className='img-sec'>
+                <button className='button-80' onClick={()=>navigate('/')}>Back to Home</button>
                 <img className="read-img" src={bookData.cover} alt={`Image of ${bookData.name}`} />
             </div>
             <div className='detail section'>
-                     <p>{bookData.name}</p>
-                    <p>{bookData.author}</p>
-                    <p>{bookData.readTime}</p>
+                     <h1 style={{color:'#0f0887'}}> {bookData.name}</h1>
+                    <p className='book-wr'>{bookData.author}</p>
+                    <p className='book-wr'>Book Read Time : {bookData.readTime}</p>
                     <p>{bookData.details}</p>
                         <div>
-                        Rate the book
-                        <Rate value={rating} onChange={handleChange}/>
+                        Rating &nbsp; &nbsp; <Rate value={rating} onChange={handleChange}/>
                         </div>
-                    <button onClick={()=>{window.open(`${bookData.pdf}`)}}> Read Book </button>
+                    <button style={{top: '10vh'}} className="button-80" onClick={()=>{window.open(`${bookData.pdf}`)}}> Read Book </button>
             </div>
         </div>
     </>
