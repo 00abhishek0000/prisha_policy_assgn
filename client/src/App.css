@@ -18,11 +18,11 @@
 }
 
 .book-item{
-    width: calc(20% - 20px);
+    width: calc(15% - 20px);
     margin: 10px;
     height: 35vh;
     margin-bottom: 12vh;
-
+    margin-left: 2vw;
 }
 .book-item:hover {
     background-color: #f1eaea; /* Change this to your desired hover color */
@@ -31,6 +31,13 @@
 .img{
     width: 30vw;
     height: 20vh;
+    box-shadow: 4px 6px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
+
+.img-nv{
+    width: 24vw;
+    height: 7.6vh;
 }
 
 .outer{

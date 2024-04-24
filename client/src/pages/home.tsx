@@ -59,7 +59,7 @@ const Home: React.FC = () => {
               <BookItem key={book.name} {...book} />
             ))}
           </div>
-          <button className="button-80" style={{height:'8vh',width:'12vw',marginTop:'5vh',marginLeft:'1vw'}} onClick={() => navigate("/addBooks")}>+ Add new Books</button>
+          <button className="button-80" style={{height:'8vh',width:'12vw',marginTop:'5vh',marginLeft:'2vw'}} onClick={() => navigate("/addBooks")}>+ Add new Books</button>
         </div>
       </div>
     </div>
